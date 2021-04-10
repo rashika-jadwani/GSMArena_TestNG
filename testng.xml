@@ -2,7 +2,5 @@
 
 <suite name="GSMArena Test Suite">
     <test name="Regression">
-        <classes>
-        </classes>
     </test>
 </suite>
