@@ -2,5 +2,8 @@
 
 <suite name="GSMArena Test Suite">
     <test name="Regression">
+        <classes>
+            <class name="module_mainmenu.MainMenuTest"></class>
+        </classes>
     </test>
 </suite>
