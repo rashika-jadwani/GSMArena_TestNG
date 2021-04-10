@@ -2,6 +2,7 @@
 
 <suite name="GSMArena Test Suite">
     <test name="Regression">
+        <parameter name="browser" value="chrome"></parameter>
         <classes>
             <class name="module_mainmenu.MainMenuTest"></class>
         </classes>
