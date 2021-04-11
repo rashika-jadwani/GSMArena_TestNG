@@ -23,42 +23,46 @@ public class MainMenuTest {
             driver = new FirefoxDriver();
         }
         objHomePage = new HomePage(driver);
+    }
+
+    @BeforeMethod
+    public void testSetup(){
         driver.get("https://www.gsmarena.com/");
     }
 
-    @Test(priority = 1)
+    @Test
     public void goToNewsPage(){
 
     }
 
-    @Test(priority = 1)
+    @Test
     public void goToReviewsPage(){
 
     }
 
-    @Test(priority = 1)
+    @Test
     public void goToVideosPage(){
 
     }
 
-    @Test(priority = 1)
+    @Test
     public void goToPhoneFinderPage(){
 
     }
 
+
     @Test
-    public void hoverOverMainMenuCheck(){
-    }
-
-
-    @Test(priority = 0)
     public void mainMenuContents(){
         Assert.assertEquals(objHomePage.checkMainMenuSize(),10);
+    }
+
+    @AfterMethod
+    public void testCleanup(){
+        driver.quit();
     }
 
 
     @AfterClass
     public void closedown(){
-        driver.quit();
     }
 }
