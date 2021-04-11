@@ -22,8 +22,10 @@ public class MainMenuTest {
             System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/drivers/geckodriver.exe");
             driver = new FirefoxDriver();
         }
+        driver.manage().window().maximize();
         objHomePage = new HomePage(driver);
         driver.get("https://www.gsmarena.com/");
+        objHomePage.mainMenuButtonClick();
     }
 
     @Test(priority = 1)

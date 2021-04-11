@@ -11,7 +11,7 @@ import java.util.List;
 
 public class HomePage {
 
-    @FindBy(xpath = "//button[@class='lines-button minus']")
+    @FindBy(xpath = "//span[@class='lines']")
     WebElement mainMenuButton;
 
     @FindBy(xpath = "//ul[@id='menu']/li")
@@ -32,7 +32,7 @@ public class HomePage {
     @FindBy(xpath = "//a[text()='Featured']")
     WebElement featured;
 
-    @FindBy(xpath = "((//a[text()='Phone Finder'])[1]")
+    @FindBy(xpath = "(//a[text()='Phone Finder'])[1]")
     WebElement phoneFinder;
 
     @FindBy(xpath = "//a[text()='Deals']")
