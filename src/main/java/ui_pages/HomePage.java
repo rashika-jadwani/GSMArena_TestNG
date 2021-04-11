@@ -1,5 +1,7 @@
 package ui_pages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -7,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.ActionsClassUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HomePage {
@@ -47,6 +50,8 @@ public class HomePage {
     @FindBy(xpath = "//a[text()='Contact']")
     WebElement contact;
 
+    @FindBy(xpath = "//input[@id='topsearch-text']")
+    WebElement searchBox;
 
     WebDriver driver;
 
@@ -92,6 +97,22 @@ public class HomePage {
     public void hoverOverVideosCheck(){
         ActionsClassUtil actUtil = new ActionsClassUtil();
         actUtil.hoverOverElement(driver,videos);
+    }
+
+    public String searchAndSelectAProduct(String productName){
+        searchBox.sendKeys(productName+ Keys.ENTER);
+        driver.findElement(By.xpath("//span[text()='"+productName+"']")).click();
+        return driver.findElement(By.xpath("//h1[contains(@class,'specs-phone-name-title')]")).getText();
+    }
+
+    public List<String> checkWhatSearchBoxReturns(String keyword){
+        searchBox.sendKeys(keyword);
+        List<WebElement> searchList = driver.findElements(By.xpath("//div[@class='phone-results']/ul/li/a/span"));
+        List<String> searchResult = new ArrayList<>();
+        for(WebElement e: searchList){
+            searchResult.add(e.getText());
+        }
+        return searchResult;
     }
 
 
