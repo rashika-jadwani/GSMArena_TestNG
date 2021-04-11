@@ -28,26 +28,29 @@ public class MainMenuTest {
 
     @Test(priority = 1)
     public void goToNewsPage(){
-
+        objHomePage.checkNewsUrl();
     }
 
     @Test(priority = 1)
     public void goToReviewsPage(){
-
+        objHomePage.checkReviewsUrl();
     }
 
     @Test(priority = 1)
     public void goToVideosPage(){
-
+        objHomePage.checkVideosUrl();
     }
 
     @Test(priority = 1)
     public void goToPhoneFinderPage(){
-
+        objHomePage.checkPhoneFinderUrl();
     }
 
-    @Test(enabled = false)
+    @Test(priority = 2)
     public void hoverOverMainMenuCheck(){
+        objHomePage.hoverOverNewsCheck();
+        objHomePage.hoverOverReviewsCheck();
+        objHomePage.hoverOverVideosCheck();
     }
 
 
