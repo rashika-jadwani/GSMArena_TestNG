@@ -2,8 +2,10 @@ package ui_pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utils.ActionsClassUtil;
 
 import java.util.List;
 
@@ -53,4 +55,37 @@ public class HomePage {
     public int checkMainMenuSize(){
         return mainMenuList.size();
     }
+
+    public void checkNewsUrl(){
+        news.click();
+    }
+
+    public void checkReviewsUrl(){
+        reviews.click();
+    }
+
+    public void checkVideosUrl(){
+        videos.click();
+    }
+
+    public void checkPhoneFinderUrl(){
+        phoneFinder.click();
+    }
+
+    public void hoverOverReviewsCheck(){
+        ActionsClassUtil actUtil = new ActionsClassUtil();
+        actUtil.hoverOverElement(driver,reviews);
+    }
+
+    public void hoverOverNewsCheck(){
+        ActionsClassUtil actUtil = new ActionsClassUtil();
+        actUtil.hoverOverElement(driver,news);
+    }
+
+    public void hoverOverVideosCheck(){
+        ActionsClassUtil actUtil = new ActionsClassUtil();
+        actUtil.hoverOverElement(driver,videos);
+    }
+
+
 }
