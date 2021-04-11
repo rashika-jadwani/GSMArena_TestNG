@@ -11,6 +11,9 @@ import java.util.List;
 
 public class HomePage {
 
+    @FindBy(xpath = "//button[@class='lines-button minus']")
+    WebElement mainMenuButton;
+
     @FindBy(xpath = "//ul[@id='menu']/li")
     List<WebElement> mainMenuList;
 
@@ -50,6 +53,10 @@ public class HomePage {
     public HomePage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver,this);
+    }
+
+    public void mainMenuButtonClick(){
+      mainMenuButton.click();
     }
 
     public int checkMainMenuSize(){
