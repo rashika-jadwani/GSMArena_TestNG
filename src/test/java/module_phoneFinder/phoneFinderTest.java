@@ -4,12 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import ui_pages.HomePage;
 import ui_pages.phoneFinderPage;
+
+import java.util.ArrayList;
 
 public class phoneFinderTest {
     private WebDriver driver;
@@ -44,6 +43,18 @@ public class phoneFinderTest {
     public void clickOnRumorMill(){
         phoneFinderObj.clickOnRumorMillutton();
         Assert.assertEquals(driver.getCurrentUrl(),"https://www.gsmarena.com/rumored.php3");
+    }
+
+    @Test
+    public void getAllBrands(){
+        ArrayList<String> listOfBrandsFetched = phoneFinderObj.listOfAllBrands();
+        Assert.assertTrue(listOfBrandsFetched.size()!=0,"list is empty");
+        System.out.println(listOfBrandsFetched);
+    }
+
+    @Test
+    public void getSpecificBrand(){
+        Assert.assertTrue(phoneFinderObj.openSpecificBrandPage("Google"),"Brand page doesn't exists");
     }
 
     @Test
