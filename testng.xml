@@ -6,6 +6,7 @@
         <classes>
             <class name="module_mainmenu.MainMenuTest"></class>
             <class name="module_searchbox.SearchBoxTest"></class>
+            <class name="module_phoneFinder.phoneFinderTest"></class>
         </classes>
     </test>
 
@@ -14,6 +15,7 @@
         <classes>
             <class name="module_mainmenu.MainMenuTest"></class>
             <class name="module_searchbox.SearchBoxTest"></class>
+            <class name="module_phoneFinder.phoneFinderTest"></class>
         </classes>
     </test>
 </suite>
