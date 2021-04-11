@@ -31,21 +31,25 @@ public class MainMenuTest {
     @Test(priority = 1)
     public void goToNewsPage(){
         objHomePage.checkNewsUrl();
+        Assert.assertEquals(driver.getCurrentUrl(),"https://www.gsmarena.com/news.php3");
     }
 
     @Test(priority = 1)
     public void goToReviewsPage(){
         objHomePage.checkReviewsUrl();
+        Assert.assertEquals(driver.getCurrentUrl(),"https://www.gsmarena.com/reviews.php3");
     }
 
     @Test(priority = 1)
     public void goToVideosPage(){
         objHomePage.checkVideosUrl();
+        Assert.assertEquals(driver.getCurrentUrl(),"https://www.gsmarena.com/videos.php3");
     }
 
     @Test(priority = 1)
     public void goToPhoneFinderPage(){
         objHomePage.checkPhoneFinderUrl();
+        Assert.assertEquals(driver.getCurrentUrl(),"https://www.gsmarena.com/search.php3?");
     }
 
     @Test(priority = 2)
