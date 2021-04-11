@@ -46,7 +46,7 @@ public class MainMenuTest {
 
     }
 
-    @Test
+    @Test(enabled = false)
     public void hoverOverMainMenuCheck(){
     }
 
