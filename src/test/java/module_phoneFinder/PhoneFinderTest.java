@@ -6,43 +6,52 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import ui_pages.HomePage;
-import ui_pages.phoneFinderPage;
+import ui_pages.PhoneFinderPage;
+import utils.PropertyFileReader;
 
 import java.util.ArrayList;
 
-public class phoneFinderTest {
+public class PhoneFinderTest {
     private WebDriver driver;
-    private phoneFinderPage phoneFinderObj;
+    private PhoneFinderPage phoneFinderObj;
     private HomePage homePageObj;
+    PropertyFileReader propertyFileReaderBrowser;
+    PropertyFileReader propertyFileReaderTest;
+
+    @BeforeClass
+    public void classSetup(){
+        propertyFileReaderBrowser = new PropertyFileReader("browserSetup.txt");
+        propertyFileReaderTest = new PropertyFileReader("testValidation.txt");
+    }
 
     @BeforeMethod
     @Parameters(value = {"browser"})
     public void setup(String browser){
         if(browser.toLowerCase().equals("chrome")){
-            System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"/drivers/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+ propertyFileReaderBrowser.getProperty("ChromeDriverPath"));
             driver = new ChromeDriver();
         }else if(browser.toLowerCase().equals("firefox")){
-            System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir")+"/drivers/geckodriver.exe");
+            System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir")+ propertyFileReaderBrowser.getProperty("FirefoxDriverPath"));
             driver = new FirefoxDriver();
         }
         driver.manage().window().maximize();
-        driver.get("https://www.gsmarena.com/");
+        driver.get(propertyFileReaderTest.getProperty("HomePageUrl"));
         homePageObj = new HomePage(driver);
         homePageObj.mainMenuButtonClick();
         homePageObj.checkPhoneFinderUrl();
-        phoneFinderObj = new phoneFinderPage(driver);
+        phoneFinderObj = new PhoneFinderPage(driver);
     }
 
     @Test
     public void clickOnAllBrands(){
         phoneFinderObj.clickOnAllBrandsButton();
-        Assert.assertEquals(driver.getCurrentUrl(),"https://www.gsmarena.com/makers.php3");
+        Assert.assertEquals(driver.getCurrentUrl(),propertyFileReaderTest.getProperty("AllBrandsUrl"));
     }
 
     @Test
     public void clickOnRumorMill(){
         phoneFinderObj.clickOnRumorMillutton();
-        Assert.assertEquals(driver.getCurrentUrl(),"https://www.gsmarena.com/rumored.php3");
+        Assert.assertEquals(driver.getCurrentUrl(),propertyFileReaderTest.getProperty("RumourMillUrl"));
     }
 
     @Test

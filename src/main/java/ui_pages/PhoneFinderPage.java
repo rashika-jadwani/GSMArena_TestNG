@@ -12,7 +12,7 @@ import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class phoneFinderPage {
+public class PhoneFinderPage {
     @FindBy(xpath = "//a[@class='pad-multiple pad-allbrands']/span[text()='All brands']")
     WebElement allBrandsButton;
 
@@ -26,7 +26,7 @@ public class phoneFinderPage {
     WebDriver driver;
     ActionsClassUtil actionsObj = new ActionsClassUtil();
 
-    public phoneFinderPage(WebDriver driver) {
+    public PhoneFinderPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }

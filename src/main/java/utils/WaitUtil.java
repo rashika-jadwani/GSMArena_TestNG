@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class WaitUtil {
 
@@ -22,6 +23,7 @@ public class WaitUtil {
     public void waitForElementToBeClickable(WebElement element, int timeOut){
         wait = new WebDriverWait(driver, timeOut);
         wait.until(ExpectedConditions.elementToBeClickable(element));
+        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     public void waitForElementVisibility(WebElement element, int timeOut){

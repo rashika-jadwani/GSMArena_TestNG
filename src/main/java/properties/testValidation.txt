@@ -1,0 +1,8 @@
+HomePageUrl=https://www.gsmarena.com/
+NewsPageUrl=https://www.gsmarena.com/news.php3
+ReviewsPageUrl=https://www.gsmarena.com/reviews.php3
+VideosPageUrl=https://www.gsmarena.com/videos.php3
+PhoneFinderPageUrl=https://www.gsmarena.com/search.php3?
+AllBrandsUrl=https://www.gsmarena.com/makers.php3
+RumourMillUrl=https://www.gsmarena.com/rumored.php3
+

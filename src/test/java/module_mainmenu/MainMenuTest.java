@@ -6,26 +6,34 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import ui_pages.HomePage;
+import utils.PropertyFileReader;
 import utils.ScreenshotUtil;
 
 public class MainMenuTest {
     private HomePage objHomePage;
     private WebDriver driver;
-
+    PropertyFileReader propertyFileReaderBrowser;
+    PropertyFileReader propertyFileReaderTest;
 
     @BeforeClass
+    public void classSetup(){
+        propertyFileReaderBrowser = new PropertyFileReader("browserSetup.txt");
+        propertyFileReaderTest = new PropertyFileReader("testValidation.txt");
+    }
+
+    @BeforeMethod
     @Parameters({"browser"})
-    public void setupClass(String browserName){
+    public void setup(String browserName){
         if(browserName.toLowerCase().equals("chrome")){
-            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/drivers/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+ propertyFileReaderBrowser.getProperty("ChromeDriverPath"));
             driver = new ChromeDriver();
         } else if( browserName.toLowerCase().equals("firefox")){
-            System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/drivers/geckodriver.exe");
+            System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+ propertyFileReaderBrowser.getProperty("FirefoxDriverPath"));
             driver = new FirefoxDriver();
         }
         driver.manage().window().maximize();
         objHomePage = new HomePage(driver);
-        driver.get("https://www.gsmarena.com/");
+        driver.get(propertyFileReaderTest.getProperty("HomePageUrl"));
         objHomePage.mainMenuButtonClick();
     }
 
@@ -34,25 +42,25 @@ public class MainMenuTest {
         objHomePage.checkNewsUrl();
         ScreenshotUtil ssUtil = new ScreenshotUtil(driver);
         ssUtil.takesScreenshotAsFile("NewsSS");
-        Assert.assertEquals(driver.getCurrentUrl(),"https://www.gsmarena.com/news.php3");
+        Assert.assertEquals(driver.getCurrentUrl(),propertyFileReaderTest.getProperty("NewsPageUrl"));
     }
 
     @Test(priority = 1)
     public void goToReviewsPage(){
         objHomePage.checkReviewsUrl();
-        Assert.assertEquals(driver.getCurrentUrl(),"https://www.gsmarena.com/reviews.php3");
+        Assert.assertEquals(driver.getCurrentUrl(),propertyFileReaderTest.getProperty("ReviewsPageUrl"));
     }
 
     @Test(priority = 1)
     public void goToVideosPage(){
         objHomePage.checkVideosUrl();
-        Assert.assertEquals(driver.getCurrentUrl(),"https://www.gsmarena.com/videos.php3");
+        Assert.assertEquals(driver.getCurrentUrl(),propertyFileReaderTest.getProperty("VideosPageUrl"));
     }
 
     @Test(priority = 1)
     public void goToPhoneFinderPage(){
         objHomePage.checkPhoneFinderUrl();
-        Assert.assertEquals(driver.getCurrentUrl(),"https://www.gsmarena.com/search.php3?");
+        Assert.assertEquals(driver.getCurrentUrl(),propertyFileReaderTest.getProperty("PhoneFinderPageUrl"));
     }
 
     @Test(priority = 2)
@@ -69,7 +77,7 @@ public class MainMenuTest {
     }
 
 
-    @AfterClass
+    @AfterMethod
     public void closedown(){
         driver.quit();
     }

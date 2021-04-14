@@ -1,0 +1,2 @@
+ChromeDriverPath=/drivers/chromedriver.exe
+FirefoxDriverPath=/drivers/geckodriver.exe
