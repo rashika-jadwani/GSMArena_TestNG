@@ -6,6 +6,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import ui_pages.HomePage;
+import utils.ScreenshotUtil;
 
 public class MainMenuTest {
     private HomePage objHomePage;
@@ -31,6 +32,8 @@ public class MainMenuTest {
     @Test(priority = 1)
     public void goToNewsPage(){
         objHomePage.checkNewsUrl();
+        ScreenshotUtil ssUtil = new ScreenshotUtil(driver);
+        ssUtil.takesScreenshotAsFile("NewsSS");
         Assert.assertEquals(driver.getCurrentUrl(),"https://www.gsmarena.com/news.php3");
     }
 

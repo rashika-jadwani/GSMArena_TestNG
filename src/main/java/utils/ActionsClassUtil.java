@@ -10,6 +10,16 @@ public class ActionsClassUtil {
 
     public void hoverOverElement(WebDriver driver, WebElement element){
         act = new Actions(driver);
-        act. moveToElement(element);
+        act.moveToElement(element);
+    }
+
+    public void rightClickOnElement(WebDriver driver, WebElement element){
+        act = new Actions(driver);
+        act.contextClick(element);
+    }
+
+    public void doubleClickOnElement(WebDriver driver, WebElement element){
+        act = new Actions(driver);
+        act.doubleClick(element);
     }
 }
