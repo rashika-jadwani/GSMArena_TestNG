@@ -12,6 +12,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 import ui_pages.HomePage;
 import utils.PropertyFileReader;
+import utils.RetryUtil;
 import utils.ScreenshotUtil;
 
 import java.lang.reflect.Method;
@@ -84,6 +85,7 @@ public class MainMenuTest extends TestBase{
 
     @Test(priority = 0)
     public void mainMenuContents(){
+        System.out.println(Thread.currentThread().getId());
         Assert.assertEquals(objHomePage.checkMainMenuSize(),10);
     }
 
