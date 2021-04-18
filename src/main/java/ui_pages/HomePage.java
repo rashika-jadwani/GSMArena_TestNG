@@ -55,6 +55,8 @@ public class HomePage {
 
     WebDriver driver;
 
+    ActionsClassUtil actUtil = new ActionsClassUtil();
+
     public HomePage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver,this);
@@ -85,17 +87,14 @@ public class HomePage {
     }
 
     public void hoverOverReviewsCheck(){
-        ActionsClassUtil actUtil = new ActionsClassUtil();
         actUtil.hoverOverElement(driver,reviews);
     }
 
     public void hoverOverNewsCheck(){
-        ActionsClassUtil actUtil = new ActionsClassUtil();
         actUtil.hoverOverElement(driver,news);
     }
 
     public void hoverOverVideosCheck(){
-        ActionsClassUtil actUtil = new ActionsClassUtil();
         actUtil.hoverOverElement(driver,videos);
     }
 
