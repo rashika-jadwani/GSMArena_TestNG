@@ -8,17 +8,17 @@
         <parameter name="browser" value="chrome"></parameter>
         <classes>
             <class name="module_mainmenu.MainMenuTest"></class>
-            <class name="module_searchbox.SearchBoxTest"></class>
-            <class name="module_phoneFinder.PhoneFinderTest"></class>
+         <!--   <class name="module_searchbox.SearchBoxTest"></class>
+            <class name="module_phoneFinder.PhoneFinderTest"></class>-->
         </classes>
     </test>
 
-    <test name="Regression_firefox">
+    <!--<test name="Regression_firefox">
         <parameter name="browser" value="firefox"></parameter>
         <classes>
             <class name="module_mainmenu.MainMenuTest"></class>
             <class name="module_searchbox.SearchBoxTest"></class>
             <class name="module_phoneFinder.PhoneFinderTest"></class>
         </classes>
-    </test>
+    </test>-->
 </suite>
